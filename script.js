@@ -2,7 +2,7 @@ const cards = document.querySelectorAll(".card");
 
 let matchedCard = 0;
 let cardOne, cardTwo;
-let disableDeck = false;
+let disableDeck = true;
 
 function flipCard(e) {
   let clickedCard = e.target; // getting user clicked card
