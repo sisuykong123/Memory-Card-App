@@ -56,7 +56,7 @@ function shuffleCard() {
   matchedCard = 0;
   cardOne = cardTwo = "";
   disableDeck = false;
-  let timeLeft = 1800;
+  let timeLeft = 30;
 
   // creating array of 16 items and each item is repeated twice
   let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -88,8 +88,8 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timer);
+      disableDeck = true;
       alert("⏰🫵😝 Game Over");
-      shuffleCard();
     }
   }, 1000);
 }
