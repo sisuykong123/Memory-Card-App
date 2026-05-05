@@ -22,31 +22,32 @@ function flipCard(e) {
 
 function matchCards(img1, img2) {
   if (img1 === img2) {
-    // if two cards img matched
-    matchedCard++; // increment matched value by 1
-    // if matched value is 8 that means user has matched all the cards (8 * 2 = 16 cards)
+    matchedCard++;
+
     if (matchedCard == 8) {
+      clearInterval(timer); // បញ្ឈប់ timer
+
       setTimeout(() => {
-        return shuffleCard();
-      }, 1000); //calling both card value to blank
+        alert("🎉 Winner!");
+        shuffleCard();
+        resetTimer(); // ចាប់ផ្តើម timer វិញ
+      }, 500);
     }
+
     cardOne.removeEventListener("click", flipCard);
     cardTwo.removeEventListener("click", flipCard);
-    cardOne = cardTwo = ""; // setting both card value to blank
-    return (disableDeck = false);
+    cardOne = cardTwo = "";
+    disableDeck = false;
   } else {
-    //if two card not matched
     setTimeout(() => {
-      //adding shake class to both card after 400ms
       cardOne.classList.add("shake");
       cardTwo.classList.add("shake");
     }, 400);
 
     setTimeout(() => {
-      //removing both shake & flip classes from the both card after  1.2 seconds
       cardOne.classList.remove("shake", "flip");
       cardTwo.classList.remove("shake", "flip");
-      cardOne = cardTwo = ""; // setting both card value to blank
+      cardOne = cardTwo = "";
       disableDeck = false;
     }, 1200);
   }
@@ -76,7 +77,7 @@ cards.forEach((cards) => {
   cards.addEventListener("click", flipCard);
 });
 
-let timeLeft = 40;
+let timeLeft = 50;
 let timer;
 
 function startTimer() {
@@ -94,7 +95,7 @@ function startTimer() {
 }
 
 function resetTimer() {
-  timeLeft = 40;
+  timeLeft = 50;
   document.getElementById("time").innerText = timeLeft;
   startTimer();
 }
