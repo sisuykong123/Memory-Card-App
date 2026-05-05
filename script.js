@@ -2,7 +2,7 @@ const cards = document.querySelectorAll(".card");
 
 let matchedCard = 0;
 let cardOne, cardTwo;
-let disableDeck = true;
+let disableDeck = false;
 
 function flipCard(e) {
   let clickedCard = e.target; // getting user clicked card
@@ -56,7 +56,6 @@ function shuffleCard() {
   matchedCard = 0;
   cardOne = cardTwo = "";
   disableDeck = false;
-  let timeLeft = 30;
 
   // creating array of 16 items and each item is repeated twice
   let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -77,7 +76,7 @@ cards.forEach((cards) => {
   cards.addEventListener("click", flipCard);
 });
 
-let timeLeft = 30;
+let timeLeft = 40;
 let timer;
 
 function startTimer() {
@@ -95,9 +94,8 @@ function startTimer() {
 }
 
 function resetTimer() {
-  timeLeft = 30;
+  timeLeft = 40;
   document.getElementById("time").innerText = timeLeft;
   startTimer();
 }
-shuffleCard();
 startTimer();
